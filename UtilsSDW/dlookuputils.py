@@ -1,5 +1,20 @@
 
 
+def create_dlookup_final(lookupmain, lookuproy):
+    """
+    Takes 2 current forms of dlookup, cleans them to conform to the common structure and makes an union
+    """
+    from pandas import concat
+    lookupmain['tSchema']=lookupmain['tTable'].apply(lambda x: x.split('.')[0] if '.' in str(x) else str(x))
+    lookupmain['tTable']=lookupmain['tTable'].apply(lambda x: x.split('.')[1] if '.' in str(x) else str(x))
+    lookupmain['sTable']=lookupmain['sTable'].apply(lambda x: x.split('.')[1] if '.' in str(x) else str(x))
+
+    #df_lookup_roy['tTable']=df_lookup_roy['tSchema']+'.'+df_lookup_roy['tTable']
+
+    lookupmain = lookupmain.loc[:,['SubjectCode','DiseaseCode','HealthTopicCode','tDatabase', 'tSchema', 'sTable','tTable','sField','tField','sValue','tValue']]
+    lookuproy = lookuproy.loc[:,['SubjectCode','DiseaseCode','HealthTopicCode','tDatabase','tSchema', 'sTable','tTable','sField','tField','sValue','tValue']]
+    return concat([lookupmain,lookuproy])
+
 def clean_lookup_generic(lookuptable):
     print("Cleaning lookup...")
     #table.replace('NULL', np.NaN, inplace=True) # TODO - risky, sto ako stvarno postoji string null

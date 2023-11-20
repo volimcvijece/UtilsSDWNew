@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='UtilsSDW',
-    version='0.0.1',
+    version='0.0.2',
     description='Utility functions for dealing with SDW specific tables (dlookup etc)',
     url='git@github.com:volimcvijece/UtilsSDW.git',
     author='Tonko Caric',
