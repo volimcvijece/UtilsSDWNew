@@ -1,7 +1,7 @@
 from setuptools import setup,find_packages
 
 setup(
-    name='UtilsSDW',
+    name='utilssdw',
     version='0.0.6',
     description='Utility functions for dealing with SDW specific tables (dlookup etc)',
     url='git@github.com:volimcvijece/UtilsSDW.git',
