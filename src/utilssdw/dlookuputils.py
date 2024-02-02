@@ -24,6 +24,10 @@ def clean_lookup_generic(lookuptable):
     lookuptable['tField']=lookuptable['tField'].str.replace('\n','').str.strip()
 
     #TODO - dodati da ostavi orig kol ako nema tocke
+
+    #TEMP - NULL data type in svalue as NULL
+    lookuptable.loc[(lookuptable['sValue'].isna()) & ~(lookuptable['tValue'].isna())& ~(lookuptable['sField'].isna()),'Value'] = 'NULL'
+
     return lookuptable.astype(str).replace("'",'', regex=True)
 
 def clean_lookup_split_tablename(lookuptable):
